@@ -15,23 +15,29 @@ const weatherClient = axios.create({
   }
 })
 
+
 app.get('/buscar', async (req, res) => {
-  const query = req.query.query
-  const result = await weatherClient.get('forecast', {
-    params: { q: query }
-  })
+  try {
+    const query = req.query.query
 
+    const result = await weatherClient.get('forecast', {
+      params: { q: query }
+    })
 
-  const previsaoDoTempo = result.data.list.map(item => ({
-    minima: item.main.temp_min,
-    maxima: item.main.temp_max,
-    umidade: item.main.humidity,
-    icone: item.weather[0].icon,
-    descricao: item.weather[0].description
-  }))
+    const previsaoDoTempo = result.data.list.map(item => ({
+      minima: item.main.temp_min,
+      maxima: item.main.temp_max,
+      umidade: item.main.humidity,
+      icone: item.weather[0].icon,
+      descricao: item.weather[0].description
+    }))
 
-  res.json(previsaoDoTempo)
+    res.json(previsaoDoTempo)
+  } catch(error){
+    console.log('Algo de errado aconteceu', error);
+}
 })
+
 
 const port = 3001
 app.listen(port, () => console.log(`A porta é ${port}.`))
