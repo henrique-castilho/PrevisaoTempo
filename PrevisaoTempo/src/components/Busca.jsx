@@ -31,11 +31,13 @@ const Busca = ({ BuscaFeita }) => {
     }, [termoDeBusca])
 
     return (
-        <div>
+        <div className='flex justify-content-center mt-4'>
             <input
                 type="text"
                 value={termoDeBusca}
-                onChange={(e) => setTermoDeBusca(e.target.value)}>
+                onChange={(e) => setTermoDeBusca(e.target.value)}
+                placeholder='Digite uma cidade'
+                className='p-2 rounded shadow-md text-center text-lg'>
             </input>
         </div>
     )   
