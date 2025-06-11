@@ -1,13 +1,14 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import Busca from './components/Busca'
+import ExibirPrevisoes from './components/ExibirPrevisoes'
 
 function App() {
-
+    const [previsoes, setPrevisoes] = useState([])
+    
   return (
     <div>
-      <Busca/>
+      <Busca BuscaFeita={setPrevisoes}/>
+      <ExibirPrevisoes dados={previsoes} />
     </div>
   )
 }

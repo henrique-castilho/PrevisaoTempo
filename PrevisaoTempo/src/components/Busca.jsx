@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
-const Busca = () => {
+const Busca = ({ BuscaFeita }) => {
     const [termoDeBusca, setTermoDeBusca] = useState('São Paulo')
 
     useEffect(() => {
@@ -15,6 +15,7 @@ const Busca = () => {
                     params: { query: termoDeBusca }
                 })
                 console.log(response.data)
+                BuscaFeita(response.data)
 
             } catch (error) {
                 console.error('Erro na busca:', error)
