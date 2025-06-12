@@ -35,6 +35,7 @@ app.get('/buscar', async (req, res) => {
     res.json(previsaoDoTempo)
   } catch(error){
     console.log('Algo de errado aconteceu', error);
+    res.status(404).json({ mensagem: 'Cidade não encontrada' })
 }
 })
 

@@ -28,6 +28,7 @@ const Busca = ({ BuscaFeita }) => {
 
             } catch (error) {
                 console.error('Erro na busca:', error)
+                BuscaFeita([])
             }
         }
 
